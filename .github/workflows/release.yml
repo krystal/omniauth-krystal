@@ -1,0 +1,32 @@
+name: Release
+on: push
+jobs:
+  release:
+    runs-on: ubuntu-latest
+    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
+    steps:
+      - uses: actions/checkout@master
+
+      - name: Set up Ruby
+        uses: actions/setup-ruby@v1
+        with:
+          ruby-version: '3.0'
+
+      - name: Export version from tag name
+        run: echo ${GITHUB_REF/refs\/tags\//} > VERSION
+
+      - name: Build Gem
+        run: gem build *.gemspec
+
+      - name: Setup credentials
+        run: |
+          mkdir -p $HOME/.gem
+          touch $HOME/.gem/credentials
+          chmod 0600 $HOME/.gem/credentials
+          printf -- "---\n:rubygems_api_key: ${RUBYGEMS_API_KEY}\n" > $HOME/.gem/credentials
+        env:
+          RUBYGEMS_API_KEY: ${{secrets.KRYSTAL_RUBYGEMS_API_KEY}}
+
+      - name: Publish to RubyGems
+        run: |
+          gem push *.gem
