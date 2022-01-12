@@ -3,7 +3,7 @@ PATH
   specs:
     omniauth-krystal (0.0.0)
       omniauth (~> 2.0)
-      omniauth-oauth2 (~> 1.6)
+      omniauth-oauth2 (~> 1.7)
 
 GEM
   remote: https://rubygems.org/
