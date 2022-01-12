@@ -8,3 +8,6 @@ Style/Documentation:
 Naming/FileName:
   Exclude:
     - "lib/omniauth-krystal.rb"
+
+Gemspec/RequireMFA:
+  Enabled: false

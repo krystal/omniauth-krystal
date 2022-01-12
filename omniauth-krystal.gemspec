@@ -20,5 +20,4 @@ Gem::Specification.new do |s|
   s.email         = ['adam@krystal.uk']
 
   s.license       = 'MIT'
-  s.metadata['rubygems_mfa_required'] = 'true'
 end
