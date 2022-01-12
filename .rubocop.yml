@@ -1,0 +1,10 @@
+AllCops:
+  TargetRubyVersion: 2.6
+  NewCops: enable
+  
+Style/Documentation:
+  Enabled: false
+
+Naming/FileName:
+  Exclude:
+    - "lib/omniauth-krystal.rb"
