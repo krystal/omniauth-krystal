@@ -9,8 +9,8 @@ module OmniAuth
 
       option :client_options,
              site: ENV.fetch('KRYSTAL_IDENTITY_API_URL', 'https://identity.k.io/api/v1'),
-             authorize_url: ENV.fetch('KRYSTAL_IDENTITY_OAUTH_AUTHORIZE_URL', 'https://oauth.identity.k.io/oauth2/auth'),
-             token_url: ENV.fetch('KRYSTAL_IDENTITY_OAUTH_TOKEN_URL', 'https://oauth.identity.k.io/oauth2/token')
+             authorize_url: ENV.fetch('KRYSTAL_IDENTITY_OAUTH_AUTHORIZE_URL', 'https://identity.k.io/oauth2/auth'),
+             token_url: ENV.fetch('KRYSTAL_IDENTITY_OAUTH_TOKEN_URL', 'https://identity.k.io/oauth2/token')
 
       option :authorize_params,
              scope: 'user.profile'
