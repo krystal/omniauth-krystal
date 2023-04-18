@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/krystal/omniauth-krystal/compare/v1.1.1...v1.1.2) (2023-04-18)
+
+
+### Bug Fixes
+
+* force release ([3655432](https://github.com/krystal/omniauth-krystal/commit/3655432068c1f5344dd014e5059f9104e46ecb24))
+
 ## [1.1.1](https://github.com/krystal/omniauth-krystal/compare/v1.1.0...v1.1.1) (2023-04-18)
 
 
