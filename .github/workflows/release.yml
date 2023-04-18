@@ -1,23 +1,33 @@
 name: Release
 on: push
 jobs:
+  release-please:
+    runs-on: ubuntu-latest
+    if: github.ref == 'refs/heads/main'
+    outputs:
+      release_created: ${{ steps.release-please.outputs.release_created }}
+      tag_name: ${{ steps.release-please.outputs.tag_name }} # e.g. v1.0.0
+      version: ${{ steps.release-please.outputs.version }} # e.g. 1.0.0
+      all: ${{ toJSON(steps.release-please.outputs) }}
+    steps:
+      - uses: google-github-actions/release-please-action@v3
+        id: release-please
+        with:
+          command: manifest
+
   release:
     runs-on: ubuntu-latest
-    if: github.event_name == 'push' && contains(github.ref, 'refs/tags/')
+    if: needs.release-please.outputs.release_created
     steps:
       - uses: actions/checkout@master
-
       - name: Set up Ruby
         uses: actions/setup-ruby@v1
         with:
-          ruby-version: '3.0'
-
+          ruby-version: "3.0"
       - name: Export version from tag name
-        run: echo ${GITHUB_REF/refs\/tags\//} > VERSION
-
+        run: echo ${{ needs.release-please.outputs.version }} > VERSION
       - name: Build Gem
         run: gem build *.gemspec
-
       - name: Setup credentials
         run: |
           mkdir -p $HOME/.gem
@@ -26,7 +36,6 @@ jobs:
           printf -- "---\n:rubygems_api_key: ${RUBYGEMS_API_KEY}\n" > $HOME/.gem/credentials
         env:
           RUBYGEMS_API_KEY: ${{secrets.KRYSTAL_RUBYGEMS_API_KEY}}
-
       - name: Publish to RubyGems
         run: |
           gem push *.gem
