@@ -5,12 +5,14 @@ require 'omniauth/strategies/oauth2'
 module OmniAuth
   module Strategies
     class Krystal < OmniAuth::Strategies::OAuth2
+      BASE_URL = ENV.fetch('KRYSTAL_IDENTITY_URL', 'https://identity.k.io')
+
       option :name, 'krystal'
 
       option :client_options,
-             site: ENV.fetch('KRYSTAL_IDENTITY_API_URL', 'https://identity.k.io/api/v1'),
-             authorize_url: ENV.fetch('KRYSTAL_IDENTITY_OAUTH_AUTHORIZE_URL', 'https://identity.k.io/oauth2/auth'),
-             token_url: ENV.fetch('KRYSTAL_IDENTITY_OAUTH_TOKEN_URL', 'https://identity.k.io/oauth2/token')
+             site: ENV.fetch('KRYSTAL_IDENTITY_API_URL', "#{BASE_URL}/api/v1"),
+             authorize_url: ENV.fetch('KRYSTAL_IDENTITY_OAUTH_AUTHORIZE_URL', "#{BASE_URL}/oauth2/auth"),
+             token_url: ENV.fetch('KRYSTAL_IDENTITY_OAUTH_TOKEN_URL', "#{BASE_URL}/oauth2/token")
 
       option :authorize_params,
              scope: 'user.profile'
