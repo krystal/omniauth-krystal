@@ -27,7 +27,8 @@ module OmniAuth
       extra do
         {
           raw_info: raw_info,
-          scope: scope
+          scope: scope,
+          session_id: raw_info['session_id']
         }
       end
 
