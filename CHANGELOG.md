@@ -1,5 +1,15 @@
 # Changelog
 
+## [1.2.0](https://github.com/krystal/omniauth-krystal/compare/v1.1.3...v1.2.0) (2023-05-22)
+
+
+### Features
+
+* add emails, roles and names to extra ([ae46ebe](https://github.com/krystal/omniauth-krystal/commit/ae46ebe777dd81d967151ad03cc2bec37c0aa889))
+* add KRYSTAL_IDENTITY_URL as a base URL for client opts ([794bdbe](https://github.com/krystal/omniauth-krystal/commit/794bdbe78de4594fd5ad8ef63bb5fb18986b9a20))
+* add session_id to extra attributes ([7c30e62](https://github.com/krystal/omniauth-krystal/commit/7c30e626e82d0377daab3589ae62d27442e0b412))
+* add url to client options ([#6](https://github.com/krystal/omniauth-krystal/issues/6)) ([d855dce](https://github.com/krystal/omniauth-krystal/commit/d855dce16ef9629f2fb9e19ac5999b9b1f400510))
+
 ## [1.1.3](https://github.com/krystal/omniauth-krystal/compare/v1.1.2...v1.1.3) (2023-04-18)
 
 
