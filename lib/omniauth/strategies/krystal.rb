@@ -30,7 +30,12 @@ module OmniAuth
         {
           raw_info: raw_info,
           scope: scope,
-          session_id: raw_info['session_id']
+          session_id: raw_info['session_id'],
+          first_name: raw_info['user']['first_name'],
+          last_name: raw_info['user']['last_name'],
+          email_addresses: raw_info['user']['email_addresses'],
+          roles: raw_info['user']['roles'],
+          two_factor_auth_enabled: raw_info['user']['two_factor_auth_enabled']
         }
       end
 
