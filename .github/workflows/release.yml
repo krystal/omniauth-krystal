@@ -3,7 +3,7 @@ on: push
 jobs:
   release-please:
     name: Release Please
-    runs-on: [self-hosted, cluster]
+    runs-on: ubuntu-latest
     if: github.ref == 'refs/heads/main'
     outputs:
       release_created: ${{ steps.release-please.outputs.release_created }}
