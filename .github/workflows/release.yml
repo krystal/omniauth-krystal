@@ -2,7 +2,8 @@ name: Release
 on: push
 jobs:
   release-please:
-    runs-on: ubuntu-latest
+    name: Release Please
+    runs-on: [self-hosted, cluster]
     if: github.ref == 'refs/heads/main'
     outputs:
       release_created: ${{ steps.release-please.outputs.release_created }}
@@ -10,9 +11,15 @@ jobs:
       version: ${{ steps.release-please.outputs.version }} # e.g. 1.0.0
       all: ${{ toJSON(steps.release-please.outputs) }}
     steps:
+      - uses: tibdex/github-app-token@v1
+        id: generate-github-token
+        with:
+          app_id: ${{ vars.RELEASE_PLEASE_GITHUB_APP_ID }}
+          private_key: ${{ secrets.RELEASE_PLEASE_GITHUB_APP_PRIVATE_KEY }}
       - uses: google-github-actions/release-please-action@v3
         id: release-please
         with:
+          token: ${{ steps.generate-github-token.outputs.token }}
           command: manifest
 
   release:
