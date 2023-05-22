@@ -5,14 +5,13 @@ require 'omniauth/strategies/oauth2'
 module OmniAuth
   module Strategies
     class Krystal < OmniAuth::Strategies::OAuth2
-      BASE_URL = ENV.fetch('KRYSTAL_IDENTITY_URL', 'https://identity.k.io')
-
       option :name, 'krystal'
 
       option :client_options,
-             site: ENV.fetch('KRYSTAL_IDENTITY_API_URL', "#{BASE_URL}/api/v1"),
-             authorize_url: ENV.fetch('KRYSTAL_IDENTITY_OAUTH_AUTHORIZE_URL', "#{BASE_URL}/oauth2/auth"),
-             token_url: ENV.fetch('KRYSTAL_IDENTITY_OAUTH_TOKEN_URL', "#{BASE_URL}/oauth2/token")
+             url: ENV.fetch('KRYSTAL_IDENTITY_URL', 'https://identity.k.io'),
+             site: ENV.fetch('KRYSTAL_IDENTITY_API_URL', nil),
+             authorize_url: ENV.fetch('KRYSTAL_IDENTITY_OAUTH_AUTHORIZE_URL', nil),
+             token_url: ENV.fetch('KRYSTAL_IDENTITY_OAUTH_TOKEN_URL', nil)
 
       option :authorize_params,
              scope: 'user.profile'
@@ -37,6 +36,14 @@ module OmniAuth
           roles: raw_info['user']['roles'],
           two_factor_auth_enabled: raw_info['user']['two_factor_auth_enabled']
         }
+      end
+
+      def initialize(app, *args, &block)
+        super
+
+        options.client_options.site ||= "#{options.client_options.url}/api/v1"
+        options.client_options.authorize_url ||= "#{options.client_options.url}/oauth2/auth"
+        options.client_options.token_url ||= "#{options.client_options.url}/oauth2/token"
       end
 
       def scope
