@@ -13,6 +13,8 @@ Gem::Specification.new do |s|
   s.files         = Dir.glob('{lib}/**/*')
   s.require_paths = ['lib']
 
+  s.add_dependency 'json'
+  s.add_dependency 'jwt'
   s.add_dependency 'omniauth', '~> 2.0'
   s.add_dependency 'omniauth-oauth2', '~> 1.7'
 
