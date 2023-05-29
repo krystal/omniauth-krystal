@@ -3,6 +3,7 @@
   "packages": {
     ".": {
       "release-type": "ruby",
+      "version-file": "lib/omniauth/krystal/version.rb",
       "changelog-path": "CHANGELOG.md",
       "bump-minor-pre-major": true,
       "bump-patch-for-minor-pre-major": true,

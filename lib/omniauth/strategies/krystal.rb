@@ -38,6 +38,7 @@ module OmniAuth
         }
       end
 
+      # rubocop:disable Metrics/AbcSize
       def initialize(app, *args, &block)
         super
 
@@ -45,6 +46,7 @@ module OmniAuth
         options.client_options.authorize_url ||= "#{options.client_options.url}/oauth2/auth"
         options.client_options.token_url ||= "#{options.client_options.url}/oauth2/token"
       end
+      # rubocop:enable Metrics/AbcSize
 
       def scope
         access_token['scope']
