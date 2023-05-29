@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.3.0](https://github.com/krystal/omniauth-krystal/compare/v1.2.0...v1.3.0) (2023-05-29)
+
+
+### Features
+
+* identity initiated login middleware ([#7](https://github.com/krystal/omniauth-krystal/issues/7)) ([cd82855](https://github.com/krystal/omniauth-krystal/commit/cd828552d54c6d143e3c676ea51920784d7d95df))
+
+
+### Bug Fixes
+
+* remove gemfile.lock ([08a7bc5](https://github.com/krystal/omniauth-krystal/commit/08a7bc50aca9040ad78032feb23aff7c6168816e))
+
 ## [1.2.0](https://github.com/krystal/omniauth-krystal/compare/v1.1.3...v1.2.0) (2023-05-22)
 
 
