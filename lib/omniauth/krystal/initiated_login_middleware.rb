@@ -18,6 +18,8 @@ module OmniAuth
       class AntiReplayTokenAlreadyUsedError < Error
       end
 
+      JWT_RESERVED_CLAIMS = %w[ar exp nbf iss aud jti iat sub].freeze
+
       def initialize(app, options = {})
         @app = app
         @options = options
@@ -65,6 +67,9 @@ module OmniAuth
         # Set the expected omniauth state to the state that we have been given so it
         # thinks the session is trusted as normal.
         env['rack.session']['omniauth.state'] = state
+
+        # Set any additional params that were passed in the state.
+        env['rack.session']['omniauth.params'] = data.reject { |key| JWT_RESERVED_CLAIMS.include?(key) }
 
         @app.call(env)
       end

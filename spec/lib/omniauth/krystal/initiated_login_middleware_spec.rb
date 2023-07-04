@@ -55,9 +55,10 @@ module OmniAuth
       let(:request_path) { "/auth/#{provider_name}/callback" }
       let(:request_params) { { 'state' => state_param } }
       let(:state_param) do
-        jwt = JWT.encode({ ar: anti_replay_token, exp: expiry }, signing_key, 'ES256', { kid: 'identity-signing' })
+        jwt = JWT.encode(jwt_payload, signing_key, 'ES256', { kid: 'identity-signing' })
         "kidil_#{jwt}"
       end
+      let(:jwt_payload) { { ar: anti_replay_token, exp: expiry } }
       let(:session) { {} }
       let(:env) do
         {
@@ -139,6 +140,22 @@ module OmniAuth
           it 'sets a session to the state parameter' do
             instance.call(env)
             expect(session['omniauth.state']).to eq state_param
+          end
+
+          context 'when there are no additional claims in the jwt' do
+            it 'sets the params parameter to an empty hash' do
+              instance.call(env)
+              expect(session['omniauth.params']).to eq({})
+            end
+          end
+
+          context 'when there are some additional claims in the jwt' do
+            let(:jwt_payload) { { ar: anti_replay_token, exp: expiry, user: 'b1952fb3-2bcc-46e7-a8d0-56a68f96301f' } }
+
+            it 'sets the additional claims in the decoded jwt to a params parameter' do
+              instance.call(env)
+              expect(session['omniauth.params']).to eq({ 'user' => 'b1952fb3-2bcc-46e7-a8d0-56a68f96301f' })
+            end
           end
         end
 
