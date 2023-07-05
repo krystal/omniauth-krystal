@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/krystal/omniauth-krystal/compare/v1.3.0...v1.4.0) (2023-07-05)
+
+
+### Features
+
+* set additional jwt claims as omniauth params ([#9](https://github.com/krystal/omniauth-krystal/issues/9)) ([9ae399e](https://github.com/krystal/omniauth-krystal/commit/9ae399e8b729e2e616666129fcc46f53938e8f12))
+
 ## [1.3.0](https://github.com/krystal/omniauth-krystal/compare/v1.2.0...v1.3.0) (2023-05-29)
 
 
