@@ -8,7 +8,7 @@ module OmniAuth
       option :name, 'krystal'
 
       option :client_options,
-             url: ENV.fetch('KRYSTAL_IDENTITY_URL', 'https://identity.k.io'),
+             url: ENV.fetch('KRYSTAL_IDENTITY_URL', 'https://identity.krystal.io'),
              site: ENV.fetch('KRYSTAL_IDENTITY_API_URL', nil),
              authorize_url: ENV.fetch('KRYSTAL_IDENTITY_OAUTH_AUTHORIZE_URL', nil),
              token_url: ENV.fetch('KRYSTAL_IDENTITY_OAUTH_TOKEN_URL', nil)

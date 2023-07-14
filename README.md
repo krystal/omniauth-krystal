@@ -4,7 +4,7 @@
 
 Krystal Identity is the single sign on service for [Krystal](https://k.io). You can use this provider to authenticate your own applications using OmniAuth.
 
-To begin, you'll need to create an OAuth Application through the [Krystal Identity](https://identity.k.io). Once you've done this, you'll need to provide your the client ID and secret provided within the web interface.
+To begin, you'll need to create an OAuth Application through the [Krystal Identity](https://identity.krystal.io). Once you've done this, you'll need to provide your the client ID and secret provided within the web interface.
 
 Once you have this, you can add the gem to your `Gemfile` and add the provider to your OmniAuth configuration.
 
@@ -30,6 +30,6 @@ Rails.application.config.middleware.insert_before OmniAuth::Builder,
 Some additional options can be provided to this:
 
 - `:provider_name` - the name of the Krystal Identity provider (defaults to `krystal`)
-- `:identity_url` - the URL to the root of Identity (defaults to `https://identity.k.io`)
+- `:identity_url` - the URL to the root of Identity (defaults to `https://identity.krystal.io`)
 - `:anti_replay_expiry_seconds` - the number of seconds to keep anti-replay tokens (defaults to `60`)
 - `:redis` - a Redis client to use for storing anti-replay tokens (defaults to `nil`)

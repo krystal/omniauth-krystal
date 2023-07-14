@@ -25,7 +25,7 @@ module OmniAuth
         @options = options
 
         @options[:provider_name] ||= 'krystal'
-        @options[:identity_url] ||= ENV.fetch('KRYSTAL_IDENTITY_URL', 'https://identity.k.io')
+        @options[:identity_url] ||= ENV.fetch('KRYSTAL_IDENTITY_URL', 'https://identity.krystal.io')
         @options[:anti_replay_expiry_seconds] ||= 60
 
         @keys = SigningKeys.new("#{@options[:identity_url]}/.well-known/signing.json")

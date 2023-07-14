@@ -5,7 +5,7 @@ require 'spec_helper'
 module OmniAuth
   module Krystal
     RSpec.describe SigningKeys do
-      let(:url) { 'https://identity.k.io/.well-known/signing.json' }
+      let(:url) { 'https://identity.krystal.io/.well-known/signing.json' }
       let(:cache) { nil }
       let(:cache_set_at) { nil }
       let(:request_body) do
