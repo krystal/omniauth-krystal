@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.5.0](https://github.com/krystal/omniauth-krystal/compare/v1.4.0...v1.5.0) (2023-07-14)
+
+
+### Features
+
+* switch domain to identity.krystal.io ([700cf7a](https://github.com/krystal/omniauth-krystal/commit/700cf7a8be10bd2a3ad490acebd1c2ad6a8a5f57))
+
 ## [1.4.0](https://github.com/krystal/omniauth-krystal/compare/v1.3.0...v1.4.0) (2023-07-05)
 
 
